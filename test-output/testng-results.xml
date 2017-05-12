@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="6" passed="6">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="15369" started-at="2017-05-12T15:57:23Z" finished-at="2017-05-12T15:57:38Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="15369" started-at="2017-05-12T15:57:23Z" finished-at="2017-05-12T15:57:38Z">
+      <class name="icm.Category">
+        <test-method status="PASS" signature="setup()[pri:0, instance:icm.Category@13fd2ccd]" name="setup" is-config="true" duration-ms="5" started-at="2017-05-12T21:27:23Z" finished-at="2017-05-12T21:27:23Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setup -->
+        <test-method status="PASS" signature="Login()[pri:1, instance:icm.Category@13fd2ccd]" name="Login" duration-ms="6763" started-at="2017-05-12T21:27:23Z" finished-at="2017-05-12T21:27:29Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Login -->
+        <test-method status="PASS" signature="company()[pri:2, instance:icm.Category@13fd2ccd]" name="company" duration-ms="2381" started-at="2017-05-12T21:27:29Z" finished-at="2017-05-12T21:27:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- company -->
+        <test-method status="PASS" signature="master()[pri:3, instance:icm.Category@13fd2ccd]" name="master" duration-ms="545" started-at="2017-05-12T21:27:32Z" finished-at="2017-05-12T21:27:32Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- master -->
+        <test-method status="PASS" signature="category()[pri:4, instance:icm.Category@13fd2ccd]" name="category" duration-ms="1700" started-at="2017-05-12T21:27:32Z" finished-at="2017-05-12T21:27:34Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- category -->
+        <test-method status="PASS" signature="location()[pri:5, instance:icm.Category@13fd2ccd]" name="location" duration-ms="1885" started-at="2017-05-12T21:27:34Z" finished-at="2017-05-12T21:27:36Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- location -->
+        <test-method status="PASS" signature="catlocrelation()[pri:6, instance:icm.Category@13fd2ccd]" name="catlocrelation" duration-ms="2065" started-at="2017-05-12T21:27:36Z" finished-at="2017-05-12T21:27:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- catlocrelation -->
+        <test-method status="PASS" signature="quit()[pri:0, instance:icm.Category@13fd2ccd]" name="quit" is-config="true" duration-ms="0" started-at="2017-05-12T21:27:38Z" finished-at="2017-05-12T21:27:38Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- quit -->
+      </class> <!-- icm.Category -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
