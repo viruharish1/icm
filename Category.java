@@ -15,7 +15,6 @@ import org.testng.annotations.Test;
 public class Category {
 	
 	public WebDriver driver = new ChromeDriver();
-
 	@BeforeTest()
 	public void setup()
 	{
@@ -73,7 +72,7 @@ public class Category {
 		saveclose.click();
 	}
 	
-	@Test(priority=3,enabled=true)
+	@Test(priority=2,enabled=true)
 	public void company()
 	{
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -125,7 +124,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=4,enabled=true)
+	@Test(priority=3,enabled=true)
 	public void master()
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
@@ -139,7 +138,7 @@ public class Category {
 		master.click();
 	}
 	
-	@Test(priority=5,enabled=true)
+	@Test(priority=4,enabled=true)
 	public void category()
 	{
 		driver.switchTo().defaultContent();
@@ -174,7 +173,7 @@ public class Category {
 				
 	}
 	
-	@Test(priority=6,enabled=true)
+	@Test(priority=5,enabled=true)
 	public void location()
 	{
 		master();
@@ -215,7 +214,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=7,enabled=true)
+	@Test(priority=6,enabled=true)
 	public void catlocrelation() throws InterruptedException 
 	{
 		master();
@@ -254,28 +253,25 @@ public class Category {
 		WebDriverWait wait5 = new WebDriverWait(driver, 200);
 		wait5.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='disableAllCategoryLocationElement']/div[2]/typeahead/div/ul[1]/li/input")));
 		
-		WebElement addlocat = driver.findElement(By.xpath("//*[@id='disableAllCategoryLocationElement']/div[2]/typeahead/div/ul[1]/li/input"));
-		addlocat.click();
-		
 		WebElement addlocation = driver.findElement(By.xpath("//*[@id='disableAllCategoryLocationElement']/div[2]/typeahead/div/ul[1]/li/input"));
 		addlocation.sendKeys("qa location");
 		
-		WebElement addloca = driver.findElement(By.xpath("//*[@id='disableAllCategoryLocationElement']/div[2]/typeahead/div/ul[2]/li[1]"));
-		addloca.click();
+		WebElement addloca = driver.findElement(By.xpath("//*[@id='disableAllCategoryLocationElement']/div[2]/typeahead/div/ul[2]"));
+		addloca.click();		
 		
 		saveclose();
 		
 		WebDriverWait wait6 = new WebDriverWait(driver, 200);
 		wait6.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[1]/button"))).isDisplayed();
 		
-		Thread.sleep(2000);
-	
+		Thread.sleep(2000); 		
+		
 		close();
 		
 	}
 	
-	@Test(priority=2,enabled=true)
-	public void template() 
+	@Test(priority=7,enabled=true)
+	public void template() throws InterruptedException 
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
 		driver.switchTo().defaultContent();
@@ -292,20 +288,57 @@ public class Category {
 		driver.findElement(By.id("field_Name")).sendKeys("Qa Template");
 		driver.findElement(By.id("field_Description")).sendKeys("Comments for qa temp");
 		 
-		driver.findElement(By.id("input-0")).click();             
-        driver.findElement(By.id("input-0")).sendKeys("qacat");
+		driver.findElement(By.id("input-4")).click();           
+        driver.findElement(By.id("input-4")).sendKeys("qacat");
       
         driver.findElement(By.id("ul-0")).click();
         driver.findElement(By.id("tempDetails")).click();
         
         WebDriverWait wait2 = new WebDriverWait(driver, 200);
-		wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='datepicker-1128-4043-1']/button")));
+		wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_validFrom']")));
 		
-		WebElement date = driver.findElement(By.xpath("//*[@id='datepicker-1128-4043-1']/button"));
-		date.click();
-	
-	}	
-
+		WebElement fromdate = driver.findElement(By.xpath("//*[@id='field_validFrom']"));
+		fromdate.sendKeys("01-05-2017"); 	
+		
+		WebDriverWait wait3 = new WebDriverWait(driver, 200);
+		wait3.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_validTo']")));
+			
+		WebElement todate = driver.findElement(By.xpath("//*[@id='field_validTo']"));
+		todate.sendKeys("30-05-2017"); 	
+		
+		driver.findElement(By.id("field_checkinType")).click();
+		
+		WebDriverWait wait4 = new WebDriverWait(driver, 200);
+		wait4.until(ExpectedConditions.elementToBeClickable(By.id("field_checkinType")));
+		
+		WebElement checkin = driver.findElement(By.id("field_checkinType"));
+		checkin.sendKeys("GPS");
+		
+		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
+		WebDriverWait wait5 = new WebDriverWait(driver, 200);
+        wait5.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='disableAllTemplateElement']/div[2]/ul/li[2]/a")));
+        
+        WebElement reqtemplate = driver.findElement(By.xpath("//*[@id='disableAllTemplateElement']/div[2]/ul/li[2]/a"));
+        reqtemplate.click();
+        
+		WebDriverWait wait6= new WebDriverWait(driver, 200);
+        wait6.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_request_name']")));
+        
+        WebElement name = driver.findElement(By.xpath("//*[@id='field_request_name']"));
+        name.click();
+        
+        driver.findElement(By.xpath("//*[@id='field_request_name']")).sendKeys("qa request");
+        
+        WebDriverWait wait7 = new WebDriverWait(driver, 200);
+        wait7.until(ExpectedConditions.elementToBeClickable(By.id("field_usergroup")));
+        
+        WebElement ugroup = driver.findElement(By.id("field_usergroup"));
+        ugroup.sendKeys("Requestor");
+        
+        saveclose();
+      
+	}
+		
 	@AfterTest()
 	public void quit()
 	{
