@@ -341,7 +341,7 @@ public class Category {
 	}
 	
 	@Test(priority=8,enabled=true)
-	public void user() 
+	public void user() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li/ul/li[1]")).click();
@@ -357,12 +357,27 @@ public class Category {
 		
 		driver.findElement(By.xpath("//*[@id='details']/div[7]/div[1]/md-autocomplete")).click(); 
 		driver.findElement(By.id("input-4")).sendKeys("testcom");	
-        driver.findElement(By.id("ul-4")).click();
-        
+        driver.findElement(By.id("ul-4")).click();		
+      
         saveclose();
         close();
-	}
+	}				
+	
+	@Test(priority=9,enabled=true)
+	public void usergroup() 
+	{
+		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
+		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li/ul/li[2]/a/span[2]")).click();
+		driver.findElement(By.xpath("//*[@id='disableUsergroupCreateButton']")).click();
 		
+		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
+		driver.switchTo().defaultContent();
+		driver.findElement(By.xpath("//*[@id='field_name']")).sendKeys("Qacontractor");
+		
+		saveclose();
+		close();
+	}
+			
 	@AfterTest()
 	public void quit()
 	{
