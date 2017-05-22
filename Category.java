@@ -288,11 +288,10 @@ public class Category {
 		driver.findElement(By.id("field_Name")).sendKeys("Qa Template");
 		driver.findElement(By.id("field_Description")).sendKeys("Comments for qa temp");
 		 
-		driver.findElement(By.id("input-4")).click();           
-        driver.findElement(By.id("input-4")).sendKeys("qacat");
-      
-        driver.findElement(By.id("ul-0")).click();
-        driver.findElement(By.id("tempDetails")).click();
+		driver.findElement(By.xpath("//*[@id='tempDetails']/div[3]/div[1]/md-autocomplete")).click(); 
+        driver.findElement(By.id("input-2")).sendKeys("qacat");
+        driver.findElement(By.id("ul-2")).click();		
+     
         
         WebDriverWait wait2 = new WebDriverWait(driver, 200);
 		wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_validFrom']")));
@@ -336,7 +335,32 @@ public class Category {
         ugroup.sendKeys("Requestor");
         
         saveclose();
+        
+        close();
       
+	}
+	
+	@Test(priority=8,enabled=true)
+	public void user() 
+	{
+		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
+		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li/ul/li[1]")).click();
+		driver.findElement(By.xpath("//*[@id='disableUserCreateButton']")).click();
+		
+		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
+		driver.switchTo().defaultContent();
+		driver.findElement(By.xpath("//*[@id='details']/div[3]/div[1]/input")).sendKeys("Qauser");
+		
+		driver.findElement(By.xpath("//*[@id='details']/div[4]/div[1]/input")).sendKeys("Qauser");
+		driver.findElement(By.xpath("//*[@id='details']/div[5]/div[1]/input")).sendKeys("Qauser");
+		driver.findElement(By.xpath("//*[@id='details']/div[6]/div[1]/input")).sendKeys("Qa@localhost");	
+		
+		driver.findElement(By.xpath("//*[@id='details']/div[7]/div[1]/md-autocomplete")).click(); 
+		driver.findElement(By.id("input-4")).sendKeys("testcom");	
+        driver.findElement(By.id("ul-4")).click();
+        
+        saveclose();
+        close();
 	}
 		
 	@AfterTest()
