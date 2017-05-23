@@ -26,13 +26,13 @@ public class Category {
 	public void Login() throws InterruptedException
 	{
 
-		driver.get("http://220.225.128.97:9100");
+		driver.get("https://minuscule-incident-tracking.herokuapp.com/");
 		
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		
 		driver.switchTo().defaultContent();
 		
-		 driver.manage().window().maximize();
+		driver.manage().window().maximize();
 		
 		WebDriverWait wait1 = new WebDriverWait(driver, 60);
 		wait1.until(ExpectedConditions.elementToBeClickable(By.id("username")));
@@ -217,7 +217,7 @@ public class Category {
 	@Test(priority=6,enabled=true)
 	public void catlocrelation() throws InterruptedException 
 	{
-		master();
+		master();		
 		
 		WebElement category = driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[3]/li/ul/li[2]/a"));
 		category.click();
@@ -374,10 +374,45 @@ public class Category {
 		driver.switchTo().defaultContent();
 		driver.findElement(By.xpath("//*[@id='field_name']")).sendKeys("Qacontractor");
 		
-		saveclose();
+		saveclose();		
 		close();
 	}
-			
+	
+	@Test(priority=10,enabled=true)
+	public void uusergrouprelation() throws InterruptedException 
+	{
+		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
+		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li/ul/li[1]")).click();
+		
+		driver.findElement(By.xpath("//*[@id='searchQuery']")).click();
+		Thread.sleep(2000);
+		driver.findElement(By.xpath("//*[@id='searchQuery']")).sendKeys("Qauser");
+		driver.findElement(By.xpath("//*[@id='searchForm']/form/button[1]")).click();
+		
+		driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/table/tbody/tr/td[1]")).click();
+		WebDriverWait wait= new WebDriverWait(driver, 200);
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[2]/ul/li[3]")));
+        
+        WebElement ugroup = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[2]/ul/li[3]"));
+        ugroup.click();	
+        WebDriverWait wait2= new WebDriverWait(driver, 200);
+        wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='usergroup']/div[1]/div/md-autocomplete/md-autocomplete-wrap")));
+        
+        WebElement search = driver.findElement(By.xpath("//*[@id='usergroup']/div[1]/div/md-autocomplete/md-autocomplete-wrap"));
+        search.click();	
+        driver.findElement(By.id("input-1")).sendKeys("Qacontractor");	
+        WebDriverWait wait3= new WebDriverWait(driver, 200);
+        wait3.until(ExpectedConditions.elementToBeClickable(By.id("ul-1")));
+        
+        WebElement select = driver.findElement(By.id("ul-1"));
+        select.click();	
+        driver.findElement(By.xpath("//*[@id='usergroup']/div[1]/div/div[1]/div/div/button")).click();
+        Thread.sleep(2000);
+        close();
+	}
+	
+	
+	
 	@AfterTest()
 	public void quit()
 	{
