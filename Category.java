@@ -79,6 +79,8 @@ public class Category {
 		
 		driver.switchTo().defaultContent();
 		
+		
+		
 		WebDriverWait wait1 = new WebDriverWait(driver, 200);
 		wait1.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[1]/li")));
 		
@@ -358,7 +360,7 @@ public class Category {
 		driver.findElement(By.xpath("//*[@id='details']/div[7]/div[1]/md-autocomplete")).click(); 
 		driver.findElement(By.id("input-4")).sendKeys("testcom");	
         driver.findElement(By.id("ul-4")).click();		
-      
+        
         saveclose();
         close();
 	}				
@@ -427,18 +429,18 @@ public class Category {
 		
 		driver.findElement(By.id("field_name")).sendKeys("Qa contract");
 		driver.findElement(By.xpath("//*[@id='details']/div[2]/div[1]/md-autocomplete/md-autocomplete-wrap")).click();
-		driver.findElement(By.id("input-13")).sendKeys("testcom");	
+		driver.findElement(By.id("input-14")).sendKeys("testcom");	
 	    WebDriverWait wait= new WebDriverWait(driver, 200);
-	    wait.until(ExpectedConditions.elementToBeClickable(By.id("ul-13")));    
-	    WebElement select = driver.findElement(By.id("ul-13"));
+	    wait.until(ExpectedConditions.elementToBeClickable(By.id("ul-14")));    
+	    WebElement select = driver.findElement(By.id("ul-14"));
 	    select.click();
 	    
 	    WebDriverWait wait2= new WebDriverWait(driver, 200);
         wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='details']/div[3]/div[1]/md-autocomplete/md-autocomplete-wrap")));
         WebElement cat = driver.findElement(By.xpath("//*[@id='details']/div[3]/div[1]/md-autocomplete/md-autocomplete-wrap"));
         cat.click();	
-        driver.findElement(By.id("input-14")).sendKeys("qacat");	
-        driver.findElement(By.id("ul-14")).click();		
+        driver.findElement(By.id("input-15")).sendKeys("qacat");	
+        driver.findElement(By.id("ul-15")).click();		
         
         driver.findElement(By.xpath("//*[@id='details']/div[4]/div[1]/typeahead/div/ul[1]/li/input")).click();
         driver.findElement(By.xpath("//*[@id='details']/div[4]/div[1]/typeahead/div/ul[2]/li")).click();
@@ -447,9 +449,7 @@ public class Category {
         saveclose();
         close();
     }
-	
-	
-	
+
 	@AfterTest()
 	public void quit()
 	{
