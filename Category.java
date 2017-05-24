@@ -22,7 +22,34 @@ public class Category {
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
 	}
 
- 
+	public void master()
+	{
+		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);		
+		driver.switchTo().defaultContent();
+		
+		WebDriverWait wait7 = new WebDriverWait(driver, 200);
+		wait7.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[3]/li")));		
+		WebElement master = driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[3]/li"));
+		master.click();
+	}
+	
+	public void close()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[1]/button")));		
+		WebElement close = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[1]/button"));
+		close.click(); 
+	}
+	
+	public void saveclose()
+	{
+		WebDriverWait wait = new WebDriverWait(driver, 60);
+		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[3]/button[3]")));		
+		WebElement saveclose = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[3]/button[3]"));
+		saveclose.click();
+	}
+	
+	
 	@Test(priority=1,enabled=true)
 	public void Login() throws InterruptedException
 	{
@@ -50,21 +77,6 @@ public class Category {
 		
 	}
 	
-	public void close()
-	{
-		WebDriverWait wait = new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[1]/button")));		
-		WebElement close = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[1]/button"));
-		close.click(); 
-	}
-	
-	public void saveclose()
-	{
-		WebDriverWait wait = new WebDriverWait(driver, 60);
-		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[3]/button[3]")));		
-		WebElement saveclose = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[3]/button[3]"));
-		saveclose.click();
-	}
 	
 	@Test(priority=2,enabled=true)
 	public void company()
@@ -112,20 +124,10 @@ public class Category {
 	}
 	
 	@Test(priority=3,enabled=true)
-	public void master()
-	{
-		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);		
-		driver.switchTo().defaultContent();
-		
-		WebDriverWait wait7 = new WebDriverWait(driver, 200);
-		wait7.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[3]/li")));		
-		WebElement master = driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[3]/li"));
-		master.click();
-	}
-	
-	@Test(priority=4,enabled=true)
 	public void category()
 	{
+		master();
+		
 		driver.switchTo().defaultContent();		
 		WebElement category = driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[3]/li/ul/li[2]/a"));
 		category.click();
@@ -154,7 +156,7 @@ public class Category {
 				
 	}
 	
-	@Test(priority=5,enabled=true)
+	@Test(priority=4,enabled=true)
 	public void location()
 	{
 		master();
@@ -192,7 +194,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=6,enabled=true)
+	@Test(priority=5,enabled=true)
 	public void catlocrelation() throws InterruptedException 
 	{
 		master();		
@@ -242,7 +244,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=7,enabled=true)
+	@Test(priority=6,enabled=true)
 	public void template() throws InterruptedException 
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
@@ -301,7 +303,7 @@ public class Category {
       
 	}
 	
-	@Test(priority=8,enabled=true)
+	@Test(priority=7,enabled=true)
 	public void user() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -324,7 +326,7 @@ public class Category {
         close();
 	}				
 	
-	@Test(priority=9,enabled=true)
+	@Test(priority=8,enabled=true)
 	public void usergroup() 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -339,7 +341,7 @@ public class Category {
 		close();
 	}
 	
-	@Test(priority=10,enabled=true)
+	@Test(priority=9,enabled=true)
 	public void uusergrouprelation() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -375,7 +377,7 @@ public class Category {
         close();
 	}
 	
-	@Test(priority=11,enabled=true)
+	@Test(priority=10,enabled=true)
 	public void contract() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[1]/li")).click();
