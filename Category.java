@@ -73,7 +73,7 @@ public class Category {
 		saveclose.click();
 	}
 	
-	@Test(priority=2,enabled=false)
+	@Test(priority=2,enabled=true)
 	public void company()
 	{
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -127,7 +127,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=3,enabled=false)
+	@Test(priority=3,enabled=true)
 	public void master()
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
@@ -141,7 +141,7 @@ public class Category {
 		master.click();
 	}
 	
-	@Test(priority=4,enabled=false)
+	@Test(priority=4,enabled=true)
 	public void category()
 	{
 		driver.switchTo().defaultContent();
@@ -176,7 +176,7 @@ public class Category {
 				
 	}
 	
-	@Test(priority=5,enabled=false)
+	@Test(priority=5,enabled=true)
 	public void location()
 	{
 		master();
@@ -217,7 +217,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=6,enabled=false)
+	@Test(priority=6,enabled=true)
 	public void catlocrelation() throws InterruptedException 
 	{
 		master();		
@@ -273,7 +273,7 @@ public class Category {
 		
 	}
 	
-	@Test(priority=7,enabled=false)
+	@Test(priority=7,enabled=true)
 	public void template() throws InterruptedException 
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
@@ -332,7 +332,7 @@ public class Category {
       
 	}
 	
-	@Test(priority=8,enabled=false)
+	@Test(priority=8,enabled=true)
 	public void user() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -355,7 +355,7 @@ public class Category {
         close();
 	}				
 	
-	@Test(priority=9,enabled=false)
+	@Test(priority=9,enabled=true)
 	public void usergroup() 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -406,7 +406,7 @@ public class Category {
         close();
 	}
 	
-	@Test(priority=11,enabled=false)
+	@Test(priority=11,enabled=true)
 	public void contract() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[1]/li")).click();
@@ -414,25 +414,16 @@ public class Category {
 		driver.findElement(By.id("disableContractCreateButton")).click();
 		
 		driver.findElement(By.id("field_name")).sendKeys("Qa contract");
-		driver.findElement(By.xpath("//*[@id='details']/div[2]/div[1]/md-autocomplete/md-autocomplete-wrap")).click();
-		driver.findElement(By.id("input-14")).sendKeys("testcom");	
-	    WebDriverWait wait= new WebDriverWait(driver, 200);
-	    wait.until(ExpectedConditions.elementToBeClickable(By.id("ul-14")));    
-	    WebElement select = driver.findElement(By.id("ul-14"));
-	    select.click();
+		driver.findElement(By.name("CompanyAutocomplete")).sendKeys("testcom" + Keys.DOWN + Keys.ENTER);
+		driver.findElement(By.name("CategoryAutocomplete")).sendKeys("qacat" + Keys.DOWN + Keys.ENTER);
 	    
-	    WebDriverWait wait2= new WebDriverWait(driver, 200);
-        wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='details']/div[3]/div[1]/md-autocomplete/md-autocomplete-wrap")));
-        WebElement cat = driver.findElement(By.xpath("//*[@id='details']/div[3]/div[1]/md-autocomplete/md-autocomplete-wrap"));
-        cat.click();	
-        driver.findElement(By.id("input-15")).sendKeys("qacat");	
-        driver.findElement(By.id("ul-15")).click();		
         
-        driver.findElement(By.xpath("//*[@id='details']/div[4]/div[1]/typeahead/div/ul[1]/li/input")).click();
-        driver.findElement(By.xpath("//*[@id='details']/div[4]/div[1]/typeahead/div/ul[2]/li")).click();
+        driver.findElement(By.xpath("//*[@id='details']/div[4]/div[1]/typeahead/div/ul[1]/li/input")).sendKeys("qa location" + Keys.DOWN + Keys.ENTER);
         driver.findElement(By.xpath("//*[@id='field_start_date']")).sendKeys("01-05-2017");	
         driver.findElement(By.xpath("//*[@id='field_end_date']")).sendKeys("30-05-2017");
+        Thread.sleep(2000);
         saveclose();
+        Thread.sleep(2000);
         close();
     }
 
