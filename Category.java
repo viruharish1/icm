@@ -3,6 +3,7 @@ package icm;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -72,7 +73,7 @@ public class Category {
 		saveclose.click();
 	}
 	
-	@Test(priority=2,enabled=true)
+	@Test(priority=2,enabled=false)
 	public void company()
 	{
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
@@ -126,7 +127,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=3,enabled=true)
+	@Test(priority=3,enabled=false)
 	public void master()
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
@@ -140,7 +141,7 @@ public class Category {
 		master.click();
 	}
 	
-	@Test(priority=4,enabled=true)
+	@Test(priority=4,enabled=false)
 	public void category()
 	{
 		driver.switchTo().defaultContent();
@@ -175,7 +176,7 @@ public class Category {
 				
 	}
 	
-	@Test(priority=5,enabled=true)
+	@Test(priority=5,enabled=false)
 	public void location()
 	{
 		master();
@@ -216,7 +217,7 @@ public class Category {
 
 	}
 	
-	@Test(priority=6,enabled=true)
+	@Test(priority=6,enabled=false)
 	public void catlocrelation() throws InterruptedException 
 	{
 		master();		
@@ -272,7 +273,7 @@ public class Category {
 		
 	}
 	
-	@Test(priority=7,enabled=true)
+	@Test(priority=7,enabled=false)
 	public void template() throws InterruptedException 
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
@@ -290,8 +291,7 @@ public class Category {
 		driver.findElement(By.id("field_Name")).sendKeys("Qa Template");
 		driver.findElement(By.id("field_Description")).sendKeys("Comments for qa temp");
 		 
-		driver.findElement(By.xpath("//*[@id='tempDetails']/div[3]/div[1]/md-autocomplete")).click(); 
-        driver.findElement(By.id("input-2")).sendKeys("qacat");
+		driver.findElement(By.name("categoryAutocomplete")).sendKeys("qacat"); 
         driver.findElement(By.id("ul-2")).click();		
      
         
@@ -334,7 +334,7 @@ public class Category {
         wait7.until(ExpectedConditions.elementToBeClickable(By.id("field_usergroup")));
         
         WebElement ugroup = driver.findElement(By.id("field_usergroup"));
-        ugroup.sendKeys("Requestor");
+        ugroup.sendKeys("Qacontractor");
         
         saveclose();
         
@@ -357,15 +357,15 @@ public class Category {
 		driver.findElement(By.xpath("//*[@id='details']/div[5]/div[1]/input")).sendKeys("Qauser");
 		driver.findElement(By.xpath("//*[@id='details']/div[6]/div[1]/input")).sendKeys("Qa@localhost");	
 		
-		driver.findElement(By.xpath("//*[@id='details']/div[7]/div[1]/md-autocomplete")).click(); 
-		driver.findElement(By.id("input-4")).sendKeys("testcom");	
-        driver.findElement(By.id("ul-4")).click();		
+		driver.findElement(By.name("CompanyAutocomplete")).sendKeys("testcom" + Keys.DOWN + Keys.ENTER);
+		Thread.sleep(3000);
         
         saveclose();
+        Thread.sleep(2000);
         close();
 	}				
 	
-	@Test(priority=9,enabled=true)
+	@Test(priority=9,enabled=false)
 	public void usergroup() 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -380,7 +380,7 @@ public class Category {
 		close();
 	}
 	
-	@Test(priority=10,enabled=true)
+	@Test(priority=10,enabled=false)
 	public void uusergrouprelation() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -420,7 +420,7 @@ public class Category {
         close();
 	}
 	
-	@Test(priority=11,enabled=true)
+	@Test(priority=11,enabled=false)
 	public void contract() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[1]/li")).click();
