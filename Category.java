@@ -278,61 +278,51 @@ public class Category {
 	{
 		driver.manage().timeouts().implicitlyWait(200, TimeUnit.SECONDS);
 		driver.switchTo().defaultContent();
-		
 		WebDriverWait wait = new WebDriverWait(driver, 200);
 		wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/li[2]")));
 		
 		WebElement template = driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/li[2]"));
 		template.click();
-		
 		WebElement addlocation = driver.findElement(By.id("disableTemplateCreateButton"));
 		addlocation.click();
 		
 		driver.findElement(By.id("field_Name")).sendKeys("Qa Template");
-		driver.findElement(By.id("field_Description")).sendKeys("Comments for qa temp");
-		 
-		driver.findElement(By.name("categoryAutocomplete")).sendKeys("qacat"); 
-        driver.findElement(By.id("ul-2")).click();		
+		driver.findElement(By.id("field_Description")).sendKeys("Comments for qa temp");		 
+		driver.findElement(By.name("categoryAutocomplete")).sendKeys("qacat" + Keys.DOWN + Keys.ENTER);
+	
      
-        
         WebDriverWait wait2 = new WebDriverWait(driver, 200);
 		wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_validFrom']")));
-		
 		WebElement fromdate = driver.findElement(By.xpath("//*[@id='field_validFrom']"));
 		fromdate.sendKeys("01-05-2017"); 	
 		
 		WebDriverWait wait3 = new WebDriverWait(driver, 200);
-		wait3.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_validTo']")));
-			
+		wait3.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_validTo']")));			
 		WebElement todate = driver.findElement(By.xpath("//*[@id='field_validTo']"));
 		todate.sendKeys("30-05-2017"); 	
 		
 		driver.findElement(By.id("field_checkinType")).click();
 		
 		WebDriverWait wait4 = new WebDriverWait(driver, 200);
-		wait4.until(ExpectedConditions.elementToBeClickable(By.id("field_checkinType")));
-		
+		wait4.until(ExpectedConditions.elementToBeClickable(By.id("field_checkinType")));		
 		WebElement checkin = driver.findElement(By.id("field_checkinType"));
 		checkin.sendKeys("GPS");
 		
 		driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
 		WebDriverWait wait5 = new WebDriverWait(driver, 200);
-        wait5.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='disableAllTemplateElement']/div[2]/ul/li[2]/a")));
-        
+        wait5.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='disableAllTemplateElement']/div[2]/ul/li[2]/a")));        
         WebElement reqtemplate = driver.findElement(By.xpath("//*[@id='disableAllTemplateElement']/div[2]/ul/li[2]/a"));
         reqtemplate.click();
         
 		WebDriverWait wait6= new WebDriverWait(driver, 200);
-        wait6.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_request_name']")));
-        
+        wait6.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='field_request_name']")));        
         WebElement name = driver.findElement(By.xpath("//*[@id='field_request_name']"));
         name.click();
         
         driver.findElement(By.xpath("//*[@id='field_request_name']")).sendKeys("qa request");
         
         WebDriverWait wait7 = new WebDriverWait(driver, 200);
-        wait7.until(ExpectedConditions.elementToBeClickable(By.id("field_usergroup")));
-        
+        wait7.until(ExpectedConditions.elementToBeClickable(By.id("field_usergroup")));       
         WebElement ugroup = driver.findElement(By.id("field_usergroup"));
         ugroup.sendKeys("Qacontractor");
         
@@ -342,7 +332,7 @@ public class Category {
       
 	}
 	
-	@Test(priority=8,enabled=true)
+	@Test(priority=8,enabled=false)
 	public void user() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
@@ -380,43 +370,39 @@ public class Category {
 		close();
 	}
 	
-	@Test(priority=10,enabled=false)
+	@Test(priority=10,enabled=true)
 	public void uusergrouprelation() throws InterruptedException 
 	{
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li")).click();
 		driver.findElement(By.xpath("/html/body/div[1]/nav/div/div[2]/ul/ul[2]/li/ul/li[1]")).click();
 		
-		driver.findElement(By.xpath("//*[@id='searchQuery']")).click();
-		driver.findElement(By.xpath("//*[@id='searchQuery']")).sendKeys("Qauser");
-		driver.findElement(By.xpath("//*[@id='searchForm']/form/button[1]")).click();
-		
-		WebDriverWait wait = new WebDriverWait(driver, 200);
-        wait.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div/div/div[2]/table/tbody/tr/td[1]")));
-        WebElement click = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/table/tbody/tr/td[1]"));
-        click.click();
-
-		WebDriverWait wait2= new WebDriverWait(driver, 200);	
-        wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[2]/ul/li[3]")));
-        WebElement ugroup = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[2]/ul/li[3]"));
-        ugroup.click();	
+		WebDriverWait wait= new WebDriverWait(driver, 200);
+        wait.until(ExpectedConditions.elementToBeClickable(By.id("searchQuery")));        
+        WebElement user = driver.findElement(By.id("searchQuery"));
+        user.sendKeys("Qauser");
         
+        WebDriverWait wait2= new WebDriverWait(driver, 200);
+        wait2.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='searchForm']/form/button[1]")));        
+        WebElement search = driver.findElement(By.xpath("//*[@id='searchForm']/form/button[1]"));
+        search.click();
+                
         WebDriverWait wait3= new WebDriverWait(driver, 200);
-        wait3.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='usergroup']/div[1]/div/md-autocomplete/md-autocomplete-wrap")));
-        WebElement search = driver.findElement(By.xpath("//*[@id='usergroup']/div[1]/div/md-autocomplete/md-autocomplete-wrap"));
-        search.click();	
+        wait3.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[2]/div/div/div[2]/table/tbody/tr")));        
+        WebElement click = driver.findElement(By.xpath("/html/body/div[2]/div/div/div[2]/table/tbody/tr"));
+        click.click();	
         
-		WebDriverWait wait4= new WebDriverWait(driver, 200);
-        wait4.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='input-10']")));
-        WebElement usgroup = driver.findElement(By.xpath("//*[@id='input-10']"));
-        usgroup.sendKeys("Qacontractor");	
-        driver.findElement(By.xpath("//*[@id='ul-10']/li")).click();
+        WebDriverWait wait4= new WebDriverWait(driver, 200);
+        wait4.until(ExpectedConditions.elementToBeClickable(By.xpath("/html/body/div[1]/div/div/form/div[2]/ul/li[3]/a")));        
+        WebElement ugroup = driver.findElement(By.xpath("/html/body/div[1]/div/div/form/div[2]/ul/li[3]/a"));
+        ugroup.click();
         
+        driver.findElement(By.name("UsergroupAutocomplete")).sendKeys("Qacontractor" + Keys.DOWN + Keys.ENTER);
         WebDriverWait wait5= new WebDriverWait(driver, 200);
-        wait5.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='usergroup']/div[1]/div/div[1]/div/div/button/span[2]")));
-        WebElement select = driver.findElement(By.xpath("//*[@id='usergroup']/div[1]/div/div[1]/div/div/button/span[2]"));
-        select.click();	
-        
+        wait5.until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id='usergroup']/div[1]/div/div[1]/div/div/button")));        
+        WebElement add = driver.findElement(By.xpath("//*[@id='usergroup']/div[1]/div/div[1]/div/div/button"));
+        add.click();
         Thread.sleep(2000);
+        
         close();
 	}
 	
